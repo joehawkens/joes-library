@@ -1,0 +1,86 @@
+header{
+    background-color: aquamarine;
+    border: solid wheat;
+    font-family: monospace;
+    width: 800px;
+    margin: auto;
+}
+
+button{
+    background-color: aquamarine;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    height: 50px;
+    font-size: 20pt;
+    border-color: wheat;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+body{
+    text-align: center;
+}
+
+
+#library-controls{
+    width: 800px;
+    margin: auto;
+    border: double blue;
+    margin-top: 30px;
+}
+
+
+/* ADD BOOK FORM ================================= */
+
+#add-book{
+    border: solid red;
+    display: none;
+}
+
+#add-book form{
+    width: 400px;
+    margin: auto;
+}
+
+#add-book input{
+    margin: 20px;
+}
+
+#add-book img{
+    border: solid grey;
+}
+
+#add-book button{
+    background-color: grey;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    height: 25px;
+    font-size: 10pt;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#add-book textarea{
+    margin-bottom: 10px;
+    resize: none;
+}
+
+/* ============================================== */
+
+#library{
+    border: solid red;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#library section{
+    border: solid black;
+    margin: 10px;
+}
