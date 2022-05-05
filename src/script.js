@@ -1,7 +1,7 @@
 // INITIALIZE THE FIREBASE APP (CDN) =============================================================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js";
+import { getDatabase, ref, onValue, set, child, get, remove } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAir0XTYP_PzUeUgVIcu9CY9dYibFqV3qo",
@@ -35,7 +35,6 @@ function writeBookData() {
 
 
   set(ref(db, title), {
-    title: title,
     image: image,
     description: description,
 
@@ -46,6 +45,7 @@ function writeBookData() {
   document.querySelector("#url-image").value = "";
   document.querySelector("#description").value = "";
 
+
 }
 
 
@@ -54,16 +54,28 @@ function writeBookData() {
 let add_book_submit = document.querySelector("#add-book-submit")
 add_book_submit.addEventListener("click", writeBookData)
 
+
+
+
 // READ =======================================================================================================================
 
+function readBookData() {
 
+  const db = getDatabase()
 
+  const bookRef = ref(db, 'Lord of the Rings');
+  onValue(bookRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data)
+  }).catch((error) => {
+    console.log(error);
+  })
 
+}
 
+document.querySelector("#refresh-button").addEventListener("click", readBookData)
 
-
-
-
+// Take read data and insert into HTML...
 
 
 // UPDATE =======================================================================================================================
@@ -80,7 +92,15 @@ add_book_submit.addEventListener("click", writeBookData)
 // DELETE =======================================================================================================================
 
 
+function deleteBookData(){
 
+  const db = getDatabase;
+  const bookRef = ref(db, 'Lord of the Rings');
+  
+
+  bookRef.remove()
+
+}
 
 
 
@@ -166,6 +186,8 @@ function test(){
   document.querySelector("#url-image").value = "";
   document.querySelector("#description").value = "";
 
+  
+
 }
 
-test_button.addEventListener("click", test)
+test_button.addEventListener("click", deleteBookData)
