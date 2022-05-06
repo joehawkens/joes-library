@@ -1,7 +1,8 @@
 // INITIALIZE THE FIREBASE APP (CDN) =============================================================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
-import { getDatabase, ref, onValue, set, child, get, remove } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js";
+import { getDatabase, ref, onValue, set, remove } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js";
+// import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAir0XTYP_PzUeUgVIcu9CY9dYibFqV3qo",
@@ -61,24 +62,39 @@ add_book_submit.addEventListener("click", writeBookData)
 
 function readBookData() {
 
-  const db = getDatabase()
-
+  const db = getDatabase();
   const bookRef = ref(db, 'Lord of the Rings');
   onValue(bookRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data)
-  }).catch((error) => {
-    console.log(error);
-  })
+  const data = snapshot.val();
+  console.log(data)
+  console.log(bookRef)
 
+
+  // Take read data and insert into HTML...
+
+  const title = bookRef.key
+  const description = data.description
+  const image = data.image
+
+  document.querySelector("#section-title").innerHTML = title
+  document.querySelector("#section-description").innerHTML = description
+  document.querySelector("#section-image").src = image
+
+
+});
 }
 
 document.querySelector("#refresh-button").addEventListener("click", readBookData)
 
-// Take read data and insert into HTML...
-
 
 // UPDATE =======================================================================================================================
+
+
+
+
+
+
+
 
 
 
@@ -94,13 +110,19 @@ document.querySelector("#refresh-button").addEventListener("click", readBookData
 
 function deleteBookData(){
 
-  const db = getDatabase;
-  const bookRef = ref(db, 'Lord of the Rings');
-  
+  const database = getDatabase()
+  const bookRef = ref(database, 'Lord of the Rings');
 
-  bookRef.remove()
+  remove(bookRef)
+
+  // Remove the HTML...
+
+  let section = document.querySelector("#book");
+  section.parentNode.removeChild(section);
 
 }
+
+document.querySelector("#delete-button").addEventListener("click", deleteBookData)
 
 
 
