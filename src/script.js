@@ -1,7 +1,7 @@
 // INITIALIZE THE FIREBASE APP (CDN) =============================================================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
-import { getDatabase, ref, onValue, set, remove } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js";
+import { getDatabase, ref, onValue, set, remove} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-database.js";
 // import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -28,6 +28,8 @@ console.log(database)
 
 function writeBookData() {
 
+  
+
   const db = getDatabase();
 
   const title = document.querySelector("#title").value;
@@ -48,6 +50,7 @@ function writeBookData() {
 
 
 }
+
 
 
 // book submit button
@@ -87,18 +90,30 @@ function readBookData() {
 document.querySelector("#refresh-button").addEventListener("click", readBookData)
 
 
-// UPDATE =======================================================================================================================
+// UPDATE (Not shown on website)=======================================================================================================================
+
+function updateBookData(){
+
+  const db = getDatabase();
+  const bookRef = ref(db, 'Lord of the Rings');
+
+  set(ref(db, 'Lord of the Rings'), {
+    description: "This is about Hobbits.",
+    image: "https://upload.wikimedia.org/wikipedia/en/e/e9/First_Single_Volume_Edition_of_The_Lord_of_the_Rings.gif"
+  })
+  .then(() => {
+    console.log('Updated succesfully.')
+  })
+  .catch((error) => {
+    console.log('Update failed')
+  });
 
 
 
+}
 
 
-
-
-
-
-
-
+document.querySelector("#update-button").addEventListener("click", updateBookData)
 
 
 
