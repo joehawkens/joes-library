@@ -14,8 +14,6 @@ The way data is structured in this project is through JSON. The books begin with
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
 I created this Software with HTML/CSS/JavaScript and Firebase's Realtime Database. I imported the Firebase functionality through CDN inside the code.
 
 # Useful Websites Used During Development
