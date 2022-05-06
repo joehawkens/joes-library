@@ -26,4 +26,4 @@ Google Firebase is a NoSQL Database
 # Future Work (things to improve and add)
 
 * The frontend needs to be able to update the book within the user interface.
-* The frontend code needs the ability to show multiple books to the library.
+* The frontend code needs the ability to show multiple books in the library.
