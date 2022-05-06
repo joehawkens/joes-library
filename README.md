@@ -8,15 +8,15 @@
 
 # Google Firebase
 
-Google Firebase is a NoSQL Database
+Google Firebase is a platform for creating software applications, whether it's web apps like the one featured here or an Android/IOS apps. Google Firebase also has NoSQL Cloud Database functionality through their Realtime Database. This is what I used. They structure their data in JSON, instead of the table model of relational databases.
 
-{Describe the structure of the database that you created.}
+The way data is structured in this project is through JSON. The books begin with their titles, and under each title is a description of the book and an image (in the form of a URL).
 
 # Development Environment
 
 {Describe the tools that you used to develop the software}
 
-{Describe the programming language that you used and any libraries.}
+I created this Software with HTML/CSS/JavaScript and Firebase's Realtime Database. I imported the Firebase functionality through CDN inside the code.
 
 # Useful Websites Used During Development
 
